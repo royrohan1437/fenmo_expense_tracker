@@ -27,3 +27,4 @@ QUICKSTART.md
 server/node_modules
 server/expenses.db
 README.md
+.env.example
