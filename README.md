@@ -6,6 +6,7 @@ A full-stack personal finance tool for tracking and managing expenses with a foc
 
 ## Features
 
+- ✅ Signup , Sign In and Log In, Log out 
 - ✅ Create expense entries with amount, category, description, and date
 - ✅ View list of all expenses
 - ✅ Filter expenses by category
@@ -89,32 +90,51 @@ For a personal expense tracker with a single user, SQLite provides all the benef
 1. **Automated Tests**: Would add unit tests for API endpoints and component tests for React
 2. **Edit/Delete Functionality**: Would require additional API endpoints and UI components
 3. **Pagination**: Current implementation loads all expenses (acceptable for personal use)
-4. **Authentication**: Single-user application assumes trusted environment
-5. **Advanced Filtering**: Multi-category filter, date range filtering
-6. **Summary Dashboard**: Charts, graphs, category breakdowns
-7. **Export Functionality**: CSV/PDF export of expenses
-8. **Optimistic UI Updates**: Would improve perceived performance
-9. **Service Worker**: Offline support and background sync
+4. **Advanced Filtering**: Multi-category filter, date range filtering
+5. **Summary Dashboard**: Charts, graphs, category breakdowns
+6. **Export Functionality**: CSV/PDF export of expenses
+7. **Optimistic UI Updates**: Would improve perceived performance
+8. **Service Worker**: Offline support and background sync
 
 ## Project Structure
 
 ```
-expense-tracker/
-├── server/
-│   ├── server.js          # Express API server
-│   ├── database.js        # SQLite database setup
-│   ├── package.json       # Server dependencies
-│   └── expenses.db        # SQLite database file (created on first run)
-├── src/
-│   ├── components/
-│   │   ├── ExpenseForm.tsx    # Form for adding expenses
-│   │   └── ExpenseList.tsx    # Table/list of expenses with filters
+fenmo-expense-tracker/
+│
+├── package.json                # Root (Frontend - Vite config + build scripts)
+├── index.html
+│
+├── src/                        # Frontend (React + TypeScript)
+│   │
+│   ├── main.tsx
+│   ├── App.tsx
+│   ├── index.css
+│   │
 │   ├── api/
-│   │   └── expenses.ts        # API client functions
-│   ├── App.tsx                # Main application component
-│   ├── main.tsx              # React entry point
-│   └── index.css             # Global styles
-└── package.json              # Frontend dependencies
+│   │   ├── auth.ts
+│   │   └── expenses.ts
+│   │
+│   ├── components/
+│   │   ├── AuthForm.tsx
+│   │   ├── ExpenseForm.tsx
+│   │   └── ExpenseList.tsx
+│   │
+│   ├── context/
+│   │   └── AuthContext.tsx
+│   │
+│   ├── hooks/
+│   │   └── useAuth.ts
+│   │
+│   └── types/
+│       └── index.ts
+│
+└── server/                     # Backend (Express + SQLite)
+    │
+    ├── package.json
+    ├── server.js               # Express entry point
+    ├── database.js             # SQLite configuration
+    └── auth.js                 # JWT + auth logic
+
 ```
 
 ## Getting Started
