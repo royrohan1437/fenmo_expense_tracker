@@ -1,7 +1,7 @@
 import { Expense } from '../components/ExpenseList';
 import { ExpenseInput } from '../components/ExpenseForm';
 
-const API_BASE_URL = 'http://localhost:3001';
+const API_BASE_URL = '';
 
 function generateIdempotencyKey(): string {
   return `${Date.now()}-${Math.random().toString(36).substring(2, 15)}`;
