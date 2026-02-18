@@ -218,15 +218,25 @@ Retrieve list of unique categories
 ## Database Schema
 
 ```sql
-CREATE TABLE expenses (
-  id INTEGER PRIMARY KEY AUTOINCREMENT,
-  amount INTEGER NOT NULL,              
-  category TEXT NOT NULL,
-  description TEXT NOT NULL,
-  date TEXT NOT NULL,                   
-  created_at TEXT DEFAULT CURRENT_TIMESTAMP,
-  idempotency_key TEXT UNIQUE           
-);
+    CREATE TABLE IF NOT EXISTS users (
+      id INTEGER PRIMARY KEY AUTOINCREMENT,
+      username TEXT UNIQUE NOT NULL,
+      email TEXT UNIQUE NOT NULL,
+      password TEXT NOT NULL,
+      created_at TEXT DEFAULT CURRENT_TIMESTAMP
+```
+
+```sql
+    CREATE TABLE IF NOT EXISTS expenses (
+      id INTEGER PRIMARY KEY AUTOINCREMENT,
+      user_id INTEGER NOT NULL,
+      amount INTEGER NOT NULL,
+      category TEXT NOT NULL,
+      description TEXT NOT NULL,
+      date TEXT NOT NULL,
+      created_at TEXT DEFAULT CURRENT_TIMESTAMP,
+      idempotency_key TEXT UNIQUE,
+      FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE
 ```
 
 ## Production Considerations
